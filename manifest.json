@@ -1,0 +1,23 @@
+
+{
+  "short_name": "Ramayana",
+  "name": "Ramayana Chronicles by Sarin & Son",
+  "description": "An immersive digital experience exploring the characters and wisdom of the Ramayana.",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fef3c7",
+  "theme_color": "#78350f",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

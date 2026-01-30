@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Ramayana Chronicles by Sarin & Son</title>
+    
+    <!-- PWA & Mobile Icons -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#78350f">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ramayana">
+    
+    <!-- Windows Tiles -->
+    <meta name="msapplication-TileColor" content="#78350f">
+    <meta name="application-name" content="Ramayana Chronicles">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sat: env(safe-area-inset-top);
+            --sar: env(safe-area-inset-right);
+            --sab: env(safe-area-inset-bottom);
+            --sal: env(safe-area-inset-left);
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: #fef3c7;
+            color: #451a03;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            padding-top: var(--sat);
+            padding-bottom: var(--sab);
+        }
+        
+        .heading-font {
+            font-family: 'Cinzel', serif;
+        }
+        
+        .forest-container {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #fef3c7, #fde68a, #f59e0b22);
+        }
+
+        .sway {
+            animation: sway 8s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+        }
+        @keyframes sway {
+            0% { transform: rotate(-0.5deg) scale(1); }
+            100% { transform: rotate(0.5deg) scale(1.01); }
+        }
+
+        .sunshine-rays {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(70deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 2%, rgba(255, 255, 255, 0) 10%);
+            filter: blur(40px);
+            opacity: 0.6;
+            animation: rays-glow 12s ease-in-out infinite alternate;
+        }
+        @keyframes rays-glow {
+            0% { opacity: 0.3; transform: translateX(-50px) rotate(-5deg); }
+            100% { opacity: 0.7; transform: translateX(50px) rotate(5deg); }
+        }
+
+        .bird {
+            position: absolute;
+            fill: rgba(69, 26, 3, 0.3);
+            animation: fly linear infinite;
+        }
+        @keyframes fly {
+            0% { transform: translate(-100px, 150px) scale(0.4); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(120vw, -50px) scale(0.6); opacity: 0; }
+        }
+
+        .leaf {
+            position: absolute;
+            fill: #d97706;
+            opacity: 0.3;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-50px) translateX(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
+        }
+
+        .parchment-bg {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(217, 119, 6, 0.15);
+            box-shadow: 0 10px 30px -10px rgba(120, 53, 15, 0.1);
+        }
+
+        /* Lord Sun Animations */
+        @keyframes sun-rotate-cw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes sun-rotate-ccw {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        @keyframes sun-pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.15); opacity: 1; }
+        }
+
+        .lord-sun-container {
+            position: fixed;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            z-index: -5;
+            pointer-events: none;
+        }
+
+        .sun-ray-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sun-ray-1 { animation: sun-rotate-cw 40s linear infinite; }
+        .sun-ray-2 { animation: sun-rotate-ccw 60s linear infinite; }
+        .sun-core { animation: sun-pulse 4s ease-in-out infinite alternate; }
+
+        /* Responsive Improvements */
+        @media (max-width: 640px) {
+            .heading-font { font-size: 0.9em; }
+            input, button { font-size: 16px !important; }
+            .lord-sun-container {
+                width: 200px;
+                height: 200px;
+                top: -30px;
+                right: -30px;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
